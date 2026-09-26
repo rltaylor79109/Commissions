@@ -1,0 +1,28 @@
+#=========================================
+# Microsoft Office / Excel Temporary Files
+#=========================================
+# Excel creates lock files starting with ~$ when a file is open
+~$*.xlsx
+~$*.xlsm
+~$*.xls
+~$*.csv
+
+# Temporary files created by Office
+~*
+*.tmp
+
+# Auto-recovery files
+*.xlk
+
+#=========================================
+# OS-Specific Files
+#=========================================
+# macOS clutter
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows clutter
+Thumbs.db
+ehthumbs.db
+Desktop.ini

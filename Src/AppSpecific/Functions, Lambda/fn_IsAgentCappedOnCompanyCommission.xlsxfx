@@ -1,0 +1,20 @@
+=LAMBDA(
+  pAgentName,
+  LET(
+    _functionName,
+    N(
+      "fn_IsAgentCappedOnCompanyCommission"
+    ),
+    _comment,
+    N(
+      "Determines whether the agent specified by name is capped on company commission. TRUE if the agent is capped on company commission; otherwise, FALSE."
+    ),
+    _result,
+    fn_GetTeamMemberInfo(
+      pAgentName,
+      tbl_TeamMemberInfo[[#Headers],
+      [Capped on Company Commission]]
+    ),
+    _result
+  )
+)

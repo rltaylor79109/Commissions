@@ -1,0 +1,39 @@
+=LAMBDA(
+  pAgentName,
+  pGci,
+  LET(
+    _functionName,
+    N(
+      "fn_GetAgentCompanyCommissionAmount"
+    ),
+    _comment,
+    N(
+      "Gets the company commission amount to be paid on this transaction by the agent specified by name."
+    ),
+    _isCapped,
+    fn_IsAgentCappedOnCompanyCommission(
+      pAgentName
+    ),
+    _rate,
+    fn_GetAgentCompanyCommissionRate(
+      pAgentName
+    ),
+    _amount,
+    IF(
+      _isCapped,
+      0,
+      _rate * pGci
+    ),
+    _roundedAmount,
+    fn_BANKERS_ROUND(
+      _amount,
+      2
+    ),
+    _result,
+    IFERROR(
+      _roundedAmount,
+      c_NOT_FOUND_TEXT
+    ),
+    _result
+  )
+)

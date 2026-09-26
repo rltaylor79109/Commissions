@@ -1,0 +1,52 @@
+=LAMBDA(
+  pTeamMemberName,
+  LET(
+    _functionName,
+    N(
+      "fn_GetTeamMemberBonusAmount"
+    ),
+    _comment,
+    N(
+      "Gets the commission bonus amount for this transaction to be paid to the team member specified by name. This typically is only applicable to admins or ISAs."
+    ),
+    _teamMemberNotSpecified,
+    NOT(
+      AND(
+        ISTEXT(
+          pTeamMemberName
+        ),
+        LEN(
+          pTeamMemberName
+        ) > 0
+      )
+    ),
+    _teamMemberIsRepOrRef,
+    fn_IsTeamMemberRepresentingOrReferring(
+      pTeamMemberName
+    ),
+    _bonusAmount,
+    fn_GetTeamMemberBonusRate(
+      pTeamMemberName
+    ) * val_CtgGrossCommissionIncome,
+    _bonusAmountRounded,
+    fn_BANKERS_ROUND(
+      _bonusAmount,
+      2
+    ),
+    _prelimResult,
+    IF(
+      OR(
+        _teamMemberIsRepOrRef,
+        _teamMemberNotSpecified
+      ),
+      0,
+      _bonusAmountRounded
+    ),
+    _result,
+    IFERROR(
+      _prelimResult,
+      ""
+    ),
+    _result
+  )
+)

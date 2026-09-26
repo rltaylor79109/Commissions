@@ -1,0 +1,20 @@
+=LAMBDA(
+  pAgentName,
+  LET(
+    _functionName,
+    N(
+      "fn_GetAgentCompanyCommissionRate"
+    ),
+    _comment,
+    N(
+      "Gets the company commission rate for the agent specified by name."
+    ),
+    _result,
+    fn_GetTeamMemberInfo(
+      pAgentName,
+      tbl_TeamMemberInfo[[#Headers],
+      [Company Commission Rate]]
+    ),
+    _result
+  )
+)

@@ -1,0 +1,55 @@
+=LAMBDA(
+  pColName,
+  LET(
+    _functionName,
+    N(
+      "fn_GetTeamMemberInfoCol"
+    ),
+    _comment,
+    N(
+      "Get the column specified by name from the Team Member Information Table"
+    ),
+    _result,
+    Switch(
+      pColName,
+      tbl_TeamMemberInfo[[#Headers],
+      [Name]],
+      tbl_TeamMemberInfo[Name],
+      tbl_TeamMemberInfo[[#Headers],
+      [Role]],
+      tbl_TeamMemberInfo[Role],
+      tbl_TeamMemberInfo[[#Headers],
+      [Paid Outside of Closing]],
+      tbl_TeamMemberInfo[Paid Outside of Closing],
+      tbl_TeamMemberInfo[[#Headers],
+      [Capped on Company Commission]],
+      tbl_TeamMemberInfo[Capped on Company Commission],
+      tbl_TeamMemberInfo[[#Headers],
+      [Capped on Royalty]],
+      tbl_TeamMemberInfo[Capped on Royalty],
+      tbl_TeamMemberInfo[[#Headers],
+      [Company Commission Rate]],
+      tbl_TeamMemberInfo[Company Commission Rate],
+      tbl_TeamMemberInfo[[#Headers],
+      [Royalty Rate]],
+      tbl_TeamMemberInfo[Royalty Rate],
+      tbl_TeamMemberInfo[[#Headers],
+      [Company Commission Capping Starting Date]],
+      tbl_TeamMemberInfo[Company Commission Capping Starting Date],
+      tbl_TeamMemberInfo[[#Headers],
+      [Royalty Capping Starting Date]],
+      tbl_TeamMemberInfo[Royalty Capping Starting Date],
+      tbl_TeamMemberInfo[[#Headers],
+      [Referring Member]],
+      tbl_TeamMemberInfo[Referring Member],
+      tbl_TeamMemberInfo[[#Headers],
+      [Representing Agent]],
+      tbl_TeamMemberInfo[Representing Agent],
+      tbl_TeamMemberInfo[[#Headers],
+      [Bonus Rate]],
+      tbl_TeamMemberInfo[Bonus Rate],
+      c_NOT_FOUND_TEXT
+    ),
+    _result
+  )
+)

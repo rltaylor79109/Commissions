@@ -1,0 +1,18 @@
+=LAMBDA(
+  LET(
+    _functionName,
+    N(
+      "fn_GetOutsideReferralFeeUseRate"
+    ),
+    _comment,
+    N(
+      "Gets the type of value used to calculate the outside referral fee. True if a percentage rate should be used; otherwise, False if a dollar amount should be be used."
+    ),
+    _result,
+    val_Outside_Referral_Fee_Entry_Type = Index(
+      tbl_Outside_Referral_Fee_Entry_Method_List[Type],
+      1
+    ),
+    _result
+  )
+)

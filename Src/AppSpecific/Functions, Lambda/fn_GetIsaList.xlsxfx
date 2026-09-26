@@ -1,0 +1,27 @@
+=LAMBDA(
+  LET(
+    _functionName,
+    N(
+      "fn_GetIsaList"
+    ),
+    _comment,
+    N(
+      "Gets the list of the Connie Taylor Group ISA names. It is used as a data validation drop down list source."
+    ),
+    _array,
+    tbl_TeamMemberInfo[Name],
+    _include,
+    tbl_TeamMemberInfo[Role] = c_NAME_ROLE_ISA,
+    _ifEmpty,
+    c_NOT_FOUND_TEXT,
+    _result,
+    TRANSPOSE(
+      FILTER(
+        _array,
+        _include,
+        _ifEmpty
+      )
+    ),
+    _result
+  )
+)

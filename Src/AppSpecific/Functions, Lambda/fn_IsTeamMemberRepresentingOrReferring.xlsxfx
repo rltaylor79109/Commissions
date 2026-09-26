@@ -1,0 +1,26 @@
+=LAMBDA(
+  pTeamMember,
+  LET(
+    _functionName,
+    N(
+      "fn_IsTeamMemberRepresentingOrReferring"
+    ),
+    _comment,
+    N(
+      "Determines the role in the transaction of the team member specified by name. True if the team member is representing the client or referred the client; otherwise, False."
+    ),
+    _isRepresentingAgent,
+    val_RepresentingAgentName = pTeamMember,
+    _isReferringTeamMember,
+    AND(
+      val_ClientReferredByCtgMember,
+      val_ReferringMemberName = pTeamMember
+    ),
+    _result,
+    OR(
+      _isRepresentingAgent,
+      _isReferringTeamMember
+    ),
+    _result
+  )
+)

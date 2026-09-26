@@ -1,0 +1,27 @@
+=LAMBDA(
+  LET(
+    _functionName,
+    N(
+      "fn_GetAdminList"
+    ),
+    _comment,
+    N(
+      "Gets the list of admins. Used as a data validation drop down list source."
+    ),
+    _array,
+    tbl_TeamMemberInfo[Name],
+    _include,
+    tbl_TeamMemberInfo[Role] = c_NAME_ROLE_ADMIN,
+    _if_empty,
+    c_NOT_FOUND_TEXT,
+    _result,
+    TRANSPOSE(
+      FILTER(
+        _array,
+        _include,
+        _if_empty
+      )
+    ),
+    _result
+  )
+)

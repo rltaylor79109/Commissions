@@ -1,0 +1,27 @@
+=LAMBDA(
+  LET(
+    _functionName,
+    N(
+      "fn_GetRepresentingAgentsList"
+    ),
+    _comment,
+    N(
+      "Gets the list of Connie Taylor Group agents that may represent clients. It is used as a data validation drop down list source."
+    ),
+    _array,
+    tbl_TeamMemberInfo[Name],
+    _include,
+    tbl_TeamMemberInfo[Representing Agent] = TRUE,
+    _if_empty,
+    c_NOT_FOUND_TEXT,
+    _result,
+    TRANSPOSE(
+      FILTER(
+        _array,
+        _include,
+        _if_empty
+      )
+    ),
+    _result
+  )
+)

@@ -1,0 +1,35 @@
+=LAMBDA(
+  pName,
+  pGCI,
+  LET(
+    _functionName,
+    N(
+      "fn_GetAdminFeeForTransaction"
+    ),
+    _comment,
+    N(
+      "Gets the Keller Williams Realty Amarillo Market Center admin fee amount to be paid on this transaction by the agent specified by name."
+    ),
+    _capped,
+    IsAgentCappedOnCompanyCommission(
+      pName
+    ),
+    _payFee,
+    AND(
+      pGCI <> 0,
+      _capped
+    ),
+    _amount,
+    if(
+      _payFee,
+      c_K_W_REALTY_ADMIN_FEE,
+      0
+    ),
+    _result,
+    fn_BANKERS_ROUND(
+      _amount,
+      2
+    ),
+    _result
+  )
+)

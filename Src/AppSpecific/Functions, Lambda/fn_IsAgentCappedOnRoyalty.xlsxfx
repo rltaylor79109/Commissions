@@ -1,0 +1,20 @@
+=LAMBDA(
+  pAgentName,
+  LET(
+    _functionName,
+    N(
+      "fn_IsAgentCappedOnRoyalty"
+    ),
+    _comment,
+    N(
+      "Determines if the agent specified by name is capped on royalty."
+    ),
+    _result,
+    fn_GetTeamMemberInfo(
+      pAgentName,
+      tbl_TeamMemberInfo[[#Headers],
+      [Capped on Royalty]]
+    ),
+    _result
+  )
+)

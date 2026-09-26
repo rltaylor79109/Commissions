@@ -1,0 +1,17 @@
+=LAMBDA(
+  LET(
+    _functionName,
+    N(
+      "fn_GetOutsideReferralFeeEntryMethodList"
+    ),
+    _comment,
+    N(
+      "Gets the list of outside referral fee entry methods."
+    ),
+    _result,
+    TRANSPOSE(
+      tbl_OutsideReferralFeeEntryMethodList[Type]
+    ),
+    _result
+  )
+)

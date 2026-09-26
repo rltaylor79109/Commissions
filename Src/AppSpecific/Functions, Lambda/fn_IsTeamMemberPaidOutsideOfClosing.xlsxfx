@@ -1,0 +1,20 @@
+=LAMBDA(
+  pTeamMemberName,
+  LET(
+    _functionName,
+    N(
+      "fn_IsTeamMemberPaidOutsideOfClosing"
+    ),
+    _comment,
+    N(
+      "Determines if the team member specified by name is paid outside of closing."
+    ),
+    _result,
+    fn_GetTeamMemberInfo(
+      pTeamMemberName,
+      tbl_TeamMemberInfo[[#Headers],
+      [Paid Outside of Closing]]
+    ),
+    _result
+  )
+)

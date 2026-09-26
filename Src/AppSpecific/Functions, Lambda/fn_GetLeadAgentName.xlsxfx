@@ -1,0 +1,34 @@
+=LAMBDA(
+  LET(
+    _functionName,
+    N(
+      "fn_GetLeadAgentName"
+    ),
+    _comment,
+    N(
+      "Gets the Connie Taylor Group's lead agent's name."
+    ),
+    _lookup_value,
+    c_NAME_ROLE_LEAD_AGENT,
+    _lookup_array,
+    tbl_TeamMemberInfo[Role],
+    _return_array,
+    tbl_TeamMemberInfo[Name],
+    _if_not_found,
+    c_NOT_FOUND_TEXT,
+    _match_mode,
+    0,
+    _search_mode,
+    1,
+    _result,
+    XLOOKUP(
+      _lookup_value,
+      _lookup_array,
+      _return_array,
+      _if_not_found,
+      _match_mode,
+      _search_mode
+    ),
+    _result
+  )
+)

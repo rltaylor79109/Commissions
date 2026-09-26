@@ -1,0 +1,27 @@
+=LAMBDA(
+  LET(
+    _functionName,
+    N(
+      "fn_GetReferringMembersList"
+    ),
+    _comment,
+    N(
+      "Gets the list of Connie Taylor Group members that may refer clients. It is used as a data validation drop down list source."
+    ),
+    _array,
+    tbl_TeamMemberInfo[Name],
+    _include,
+    tbl_TeamMemberInfo[Referring Member] = TRUE,
+    _ifEmpty,
+    c_NOT_FOUND_TEXT,
+    _result,
+    TRANSPOSE(
+      FILTER(
+        _array,
+        _include,
+        _ifEmpty
+      )
+    ),
+    _result
+  )
+)

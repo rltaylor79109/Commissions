@@ -1,0 +1,34 @@
+=LAMBDA(
+  pAgentName,
+  pAgentGci,
+  LET(
+    _functionName,
+    N(
+      "fn_GetAgentRoyaltyAmount"
+    ),
+    _comment,
+    N(
+      "Get the royalty payment amount for the agent specified by name for the specifed agent's gross commission income."
+    ),
+    _capped,
+    fn_IsAgentCappedOnRoyalty(
+      pAgentName
+    ),
+    _rate,
+    fn_GetAgentRoyaltyRate(
+      pAgentName
+    ),
+    _amount,
+    IF(
+      _capped,
+      0,
+      _rate * pAgentGci
+    ),
+    _result,
+    fn_BANKERS_ROUND(
+      _amount,
+      2
+    ),
+    _result
+  )
+)
